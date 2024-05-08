@@ -1,38 +1,36 @@
 import logo from "./logo.svg";
-import { useState } from 'react';
+import { useState } from "react";
 import "./App.css";
 import Square from "./Square";
 
-
 function App() {
-  
-  const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", "",])
-  const [player, setPlayer] = useState(true)
+  const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", ""]);
+  const [player, setPlayer] = useState(true);
 
   function handleClick() {
-    setSquares(["", "", "", "", "", "", "", "", "",])
+    setSquares(["", "", "", "", "", "", "", "", ""]);
     setPlayer(true);
   }
 
   function calculateWinner(arr) {
-      const lines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-      ];
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6], 
+    ];
 
-      for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-        if (arr[a] && arr[a] === arr[b] && arr[a] === arr[c]) {
-          return `${arr[a]} won!`
-        }
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (arr[a] && arr[a] === arr[b] && arr[a] === arr[c]) {
+        return `${arr[a]} won! `;
       }
-      return "Who Will Win?"
+    }
+    return "Who Will Win? ";
   }
 
   return (
@@ -43,7 +41,6 @@ function App() {
         {squares.map((val, index) => {
           return (
             <Square
-              key={index}
               setSquares={setSquares}
               index={index}
               squareValue={val}
@@ -59,4 +56,3 @@ function App() {
 }
 
 export default App;
-
